@@ -1,0 +1,335 @@
+  <!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kanishka S — Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0E1020;
+    --panel:#161A33;
+    --panel-2:#1D2242;
+    --text:#EEEFF7;
+    --text-dim:#A7ACC8;
+    --accent:#8C7BFF;
+    --accent-2:#8FF0A4;
+    --line:#2B2F52;
+    --radius-sm:6px;
+    --radius-md:12px;
+    --serif:'Space Grotesk', sans-serif;
+    --body:'Inter', sans-serif;
+    --mono:'JetBrains Mono', monospace;
+  }
+  @media (prefers-color-scheme: light){
+    :root:not([data-theme="dark"]){
+      --bg:#0E1020; --panel:#161A33; --panel-2:#1D2242; --text:#EEEFF7; --text-dim:#A7ACC8; --line:#2B2F52;
+    }
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--bg);
+    color:var(--text);
+    font-family:var(--body);
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  body::before{
+    content:"";
+    position:fixed; inset:0;
+    background-image:
+      linear-gradient(var(--line) 1px, transparent 1px),
+      linear-gradient(90deg, var(--line) 1px, transparent 1px);
+    background-size:64px 64px;
+    opacity:.12;
+    pointer-events:none;
+    z-index:0;
+  }
+  a{color:inherit;}
+  .wrap{max-width:880px; margin:0 auto; padding:0 28px; position:relative; z-index:1;}
+  section{padding:88px 0;}
+  section + section{border-top:1px solid var(--line);}
+
+  /* NAV */
+  nav{
+    position:sticky; top:0; z-index:10;
+    backdrop-filter:blur(10px);
+    background:rgba(14,16,32,.75);
+    border-bottom:1px solid var(--line);
+  }
+  nav .wrap{
+    display:flex; align-items:center; justify-content:space-between;
+    padding:16px 28px;
+  }
+  .logo{font-family:var(--mono); font-size:15px; letter-spacing:.02em; color:var(--accent-2);}
+  .navlinks{display:flex; gap:28px; font-size:14px;}
+  .navlinks a{color:var(--text-dim); text-decoration:none; transition:color .2s;}
+  .navlinks a:hover{color:var(--text);}
+
+  /* HERO */
+  .hero{padding-top:96px; padding-bottom:96px;}
+  .hero-kicker{
+    font-family:var(--mono); font-size:13px; color:var(--accent-2);
+    margin-bottom:18px;
+  }
+  h1{
+    font-family:var(--serif);
+    font-weight:700;
+    font-size:clamp(40px, 7vw, 68px);
+    line-height:1.05;
+    letter-spacing:-.01em;
+    max-width:11ch;
+  }
+  .hero-role{
+    font-family:var(--body);
+    font-size:19px;
+    color:var(--text-dim);
+    margin-top:20px;
+    max-width:46ch;
+  }
+  .hero-contact{
+    display:flex; flex-wrap:wrap; gap:10px 22px;
+    margin-top:32px;
+    font-family:var(--mono); font-size:13px; color:var(--text-dim);
+  }
+  .hero-contact span{display:flex; align-items:center; gap:8px;}
+  .dot{width:6px; height:6px; border-radius:50%; background:var(--accent-2); display:inline-block;}
+
+  /* SECTION HEADS */
+  h2{
+    font-family:var(--serif); font-weight:600;
+    font-size:28px; margin-bottom:36px;
+    display:flex; align-items:baseline; gap:14px;
+  }
+  h2 .idx{font-family:var(--mono); font-size:15px; color:var(--accent);}
+
+  /* OBJECTIVE */
+  .objective p{
+    font-size:17px; color:var(--text-dim); max-width:64ch;
+  }
+
+  /* SKILLS */
+  .skill-grid{display:grid; grid-template-columns:repeat(auto-fit, minmax(220px,1fr)); gap:18px;}
+  .skill-card{
+    background:var(--panel); border:1px solid var(--line); border-radius:var(--radius-md);
+    padding:22px;
+  }
+  .skill-card h3{
+    font-family:var(--body); font-weight:600; font-size:14px; color:var(--text-dim);
+    margin-bottom:14px;
+  }
+  .chip-row{display:flex; flex-wrap:wrap; gap:8px;}
+  .chip{
+    font-family:var(--mono); font-size:12.5px;
+    background:var(--panel-2); border:1px solid var(--line);
+    padding:6px 11px; border-radius:999px; color:var(--text);
+  }
+
+  /* PROJECT */
+  .project{
+    background:var(--panel); border:1px solid var(--line); border-radius:var(--radius-md);
+    padding:32px; display:grid; grid-template-columns:1.1fr .9fr; gap:32px; align-items:center;
+  }
+  @media (max-width:700px){ .project{grid-template-columns:1fr;} }
+  .project h3{font-family:var(--serif); font-size:24px; margin-bottom:12px;}
+  .project ul{padding-left:18px; color:var(--text-dim); font-size:15px; display:flex; flex-direction:column; gap:8px;}
+  .project ul li::marker{color:var(--accent-2);}
+  .scene{
+    aspect-ratio:4/3; border-radius:var(--radius-sm); overflow:hidden;
+    background:linear-gradient(180deg,#232858 0%, #171B33 60%, #12142A 100%);
+    position:relative;
+  }
+  .scene svg{width:100%; height:100%; display:block;}
+
+  /* EDUCATION */
+  .edu-item{
+    display:grid; grid-template-columns:140px 1fr; gap:20px;
+    padding:20px 0; border-top:1px solid var(--line);
+  }
+  .edu-item:first-child{border-top:none;}
+  .edu-mark{font-family:var(--mono); font-size:13px; color:var(--accent-2);}
+  .edu-item h3{font-family:var(--serif); font-size:18px; font-weight:600;}
+  .edu-item p{color:var(--text-dim); font-size:14.5px; margin-top:4px;}
+
+  /* STRENGTHS */
+  .strength-list{display:flex; flex-direction:column; gap:0;}
+  .strength-item{
+    padding:18px 0; border-top:1px solid var(--line);
+    font-size:16px; color:var(--text);
+  }
+  .strength-item:first-child{border-top:none;}
+
+  /* FOOTER / CONTACT */
+  footer{padding:80px 0 60px;}
+  footer h2{margin-bottom:16px;}
+  footer p{color:var(--text-dim); max-width:50ch; margin-bottom:28px;}
+  .contact-links{display:flex; flex-wrap:wrap; gap:16px;}
+  .contact-links a{
+    font-family:var(--mono); font-size:14px;
+    border:1px solid var(--line); padding:12px 18px; border-radius:var(--radius-sm);
+    text-decoration:none; transition:border-color .2s, color .2s;
+  }
+  .contact-links a:hover{border-color:var(--accent); color:var(--accent-2);}
+  .foot-note{margin-top:60px; font-size:12.5px; color:var(--text-dim); font-family:var(--mono);}
+
+  :focus-visible{outline:2px solid var(--accent-2); outline-offset:3px;}
+  @media (prefers-reduced-motion: reduce){ html{scroll-behavior:auto;} }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <div class="logo">kanishka.s</div>
+    <div class="navlinks">
+      <a href="#about">About</a>
+      <a href="#skills">Skills</a>
+      <a href="#projects">Projects</a>
+      <a href="#education">Education</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="hero-kicker">// AI &amp; ML student, building things that move</div>
+    <h1>Kanishka S</h1>
+    <p class="hero-role">Second-year B.Sc. Artificial Intelligence &amp; Machine Learning student, with a working foundation in Python, JavaScript, HTML and CSS — and a habit of turning ideas into playable code.</p>
+    <div class="hero-contact">
+      <span><i class="dot"></i>kani06102008@gmail.com</span>
+      <span><i class="dot"></i>+91 63695 26463</span>
+      <span><i class="dot"></i>Muthayammal College of Arts and Science</span>
+    </div>
+  </div>
+</header>
+
+<section id="about" class="objective">
+  <div class="wrap">
+    <h2><span class="idx">01</span>Objective</h2>
+    <p>Motivated to apply programming and problem-solving skills to real-world projects as an intern or entry-level developer, while continuing to grow through hands-on building — from game logic to machine learning fundamentals.</p>
+  </div>
+</section>
+
+<section id="skills">
+  <div class="wrap">
+    <h2><span class="idx">02</span>Skills</h2>
+    <div class="skill-grid">
+      <div class="skill-card">
+        <h3>Programming Languages</h3>
+        <div class="chip-row">
+          <span class="chip">Python</span>
+          <span class="chip">JavaScript</span>
+        </div>
+      </div>
+      <div class="skill-card">
+        <h3>Web Technologies</h3>
+        <div class="chip-row">
+          <span class="chip">HTML</span>
+          <span class="chip">CSS</span>
+        </div>
+      </div>
+      <div class="skill-card">
+        <h3>Core Interest</h3>
+        <div class="chip-row">
+          <span class="chip">Artificial Intelligence</span>
+          <span class="chip">Machine Learning</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="projects">
+  <div class="wrap">
+    <h2><span class="idx">03</span>Projects</h2>
+    <div class="project">
+      <div>
+        <h3>2D Bike Race Game</h3>
+        <ul>
+          <li>Designed and developed a 2D bike racing game featuring player controls, obstacles, and scoring.</li>
+          <li>Implemented core game logic and interactive elements using programming fundamentals.</li>
+          <li>Strengthened problem-solving and logical thinking through hands-on game development.</li>
+        </ul>
+      </div>
+      <div class="scene">
+        <svg viewBox="0 0 300 225" xmlns="http://www.w3.org/2000/svg">
+          <rect x="0" y="150" width="300" height="75" fill="#12142A"/>
+          <rect x="0" y="150" width="300" height="6" fill="#8C7BFF" opacity="0.5"/>
+          <g stroke="#2B2F52" stroke-width="4" stroke-dasharray="16 14">
+            <line x1="0" y1="187" x2="300" y2="187"/>
+          </g>
+          <circle cx="230" cy="55" r="20" fill="#8FF0A4" opacity="0.85"/>
+          <g transform="translate(70,120)">
+            <circle cx="0" cy="55" r="16" fill="none" stroke="#EEEFF7" stroke-width="3"/>
+            <circle cx="60" cy="55" r="16" fill="none" stroke="#EEEFF7" stroke-width="3"/>
+            <line x1="0" y1="55" x2="26" y2="30" stroke="#EEEFF7" stroke-width="3"/>
+            <line x1="26" y1="30" x2="60" y2="55" stroke="#EEEFF7" stroke-width="3"/>
+            <line x1="26" y1="30" x2="40" y2="55" stroke="#EEEFF7" stroke-width="3"/>
+            <line x1="40" y1="55" x2="60" y2="55" stroke="#EEEFF7" stroke-width="3"/>
+            <line x1="26" y1="30" x2="20" y2="10" stroke="#EEEFF7" stroke-width="3"/>
+            <circle cx="20" cy="6" r="6" fill="#8C7BFF"/>
+          </g>
+          <rect x="10" y="30" width="6" height="26" fill="#8C7BFF" opacity="0.6"/>
+          <rect x="150" y="45" width="6" height="26" fill="#8C7BFF" opacity="0.4"/>
+        </svg>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="education">
+  <div class="wrap">
+    <h2><span class="idx">04</span>Education</h2>
+    <div class="edu-item">
+      <div class="edu-mark">Current</div>
+      <div>
+        <h3>B.Sc. Artificial Intelligence &amp; Machine Learning</h3>
+        <p>Muthayammal College of Arts and Science · 2nd Year</p>
+      </div>
+    </div>
+    <div class="edu-item">
+      <div class="edu-mark">12th</div>
+      <div>
+        <h3>Higher Secondary</h3>
+        <p>Government Girls Higher Secondary School · 494 marks</p>
+      </div>
+    </div>
+    <div class="edu-item">
+      <div class="edu-mark">10th</div>
+      <div>
+        <h3>Secondary School</h3>
+        <p>Government Girls Higher Secondary School · 389 marks</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="strengths">
+  <div class="wrap">
+    <h2><span class="idx">05</span>Strengths</h2>
+    <div class="strength-list">
+      <div class="strength-item">Quick learner with a keen interest in AI &amp; ML technologies</div>
+      <div class="strength-item">Strong logical and analytical thinking</div>
+      <div class="strength-item">Good communication and teamwork abilities</div>
+    </div>
+  </div>
+</section>
+
+<footer id="contact">
+  <div class="wrap">
+    <h2><span class="idx">06</span>Get in touch</h2>
+    <p>Open to internship and entry-level opportunities where I can apply what I'm learning to real projects.</p>
+    <div class="contact-links">
+      <a href="mailto:kani06102008@gmail.com">kani06102008@gmail.com</a>
+      <a href="tel:+916369526463">+91 63695 26463</a>
+    </div>
+    <div class="foot-note">© Kanishka S — built with HTML &amp; CSS</div>
+  </div>
+</footer>
+
+</body>
+</html>
